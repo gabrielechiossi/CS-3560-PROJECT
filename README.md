@@ -12,7 +12,7 @@ Si'raaj Woods (github: siraajwoods, developer)<br />
 Description of the project: Create an online free sound recorder<br />
 Description of target technology: Web-based<br />
 Instructions to compile: n/a<br />
-Github repo: <br />
+Github repo: https://github.com/gabrielechiossi/CS-3560-PROJECT.git<br />
 <br />
 <br />
 <br />
