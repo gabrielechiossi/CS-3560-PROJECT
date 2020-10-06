@@ -20,7 +20,7 @@ Github repo: https://github.com/gabrielechiossi/CS-3560-PROJECT.git<br />
 <br />
 
 
-
+:)
 
 What language are we learning towards? 
   Javascript, CSS3, Other tools if we need them
