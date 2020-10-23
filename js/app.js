@@ -145,38 +145,63 @@ function visualize(stream) {
     const HEIGHT = canvas.height;
 
     requestAnimationFrame(draw);
+    
+    if(stop.disabled !== true){
+      analyser.getByteTimeDomainData(dataArray);
 
-    analyser.getByteTimeDomainData(dataArray);
-
-    canvasCtx.fillStyle = 'rgb(255, 255, 255)';
-    canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
-
-    canvasCtx.lineWidth = 4;
-    canvasCtx.strokeStyle = 'rgb(255, 81, 38)';
-
-    canvasCtx.beginPath();
-
-    let sliceWidth = WIDTH * 1.0 / bufferLength;
-    let x = 0;
-
-
-    for(let i = 0; i < bufferLength; i++) {
-
-      let v = dataArray[i] / 128.0;
-      let y = v * HEIGHT/2;
-
-      if(i === 0) {
-        canvasCtx.moveTo(x, y);
-      } else {
-        canvasCtx.lineTo(x, y);
+      canvasCtx.fillStyle = 'rgb(255, 255, 255)';
+      canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
+  
+      canvasCtx.lineWidth = 4;
+      canvasCtx.strokeStyle = 'rgb(255, 81, 38)';
+  
+      canvasCtx.beginPath();
+  
+      let sliceWidth = WIDTH * 1.0 / bufferLength;
+      let x = 0;
+  
+  
+      for(let i = 0; i < bufferLength; i++) {
+  
+        let v = dataArray[i] / 128.0;
+        let y = v * HEIGHT/2;
+  
+        if(i === 0) {
+          canvasCtx.moveTo(x, y);
+        } else {
+          canvasCtx.lineTo(x, y);
+        }
+  
+        x += sliceWidth;
       }
+  
+      canvasCtx.lineTo(canvas.width, canvas.height/2);
+      canvasCtx.stroke();
+  
+    }else{
+      analyser.getByteTimeDomainData(dataArray);
 
-      x += sliceWidth;
+      canvasCtx.fillStyle = 'rgb(255, 255, 255)';
+      canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
+  
+      canvasCtx.lineWidth = 4;
+      canvasCtx.strokeStyle = 'rgb(255, 81, 38)';
+  
+      canvasCtx.beginPath();
+      
+      let sliceWidth = WIDTH * 1.0 / bufferLength;
+      let x = 0;
+      let y = HEIGHT/2;
+
+      for(let i = 0; i < bufferLength; i++) {
+        canvasCtx.lineTo(x, y);
+        x += sliceWidth;
+      }
+      canvasCtx.lineTo(canvas.width, canvas.height/2);
+      canvasCtx.stroke();
     }
 
-    canvasCtx.lineTo(canvas.width, canvas.height/2);
-    canvasCtx.stroke();
-
+   
   }
 }
 
