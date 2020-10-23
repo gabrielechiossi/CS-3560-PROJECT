@@ -56,8 +56,7 @@ if (navigator.mediaDevices.getUserMedia) {
     mediaRecorder.onstop = function(e) {
       console.log("data available after MediaRecorder.stop() called.");
 
-      const clipName = prompt('Enter a name for your sound clip?','My unnamed clip'); // Siraaj: Code will allow you to enter basic data to the program
-
+      const clipName = prompt('Enter a name for your sound clip?','My unnamed clip');
       const clipContainer = document.createElement('article');
       const clipLabel = document.createElement('p');
       const audio = document.createElement('audio');
@@ -199,9 +198,7 @@ function visualize(stream) {
       }
       canvasCtx.lineTo(canvas.width, canvas.height/2);
       canvasCtx.stroke();
-    }
-
-   
+    }   
   }
 }
 
