@@ -4,8 +4,7 @@ Team Name: WAVY<br />
 Team Number: Group 1<br />
 Session 101<br />
 
-Bryce Rohrer (github: brycerohrer, maintainer)<br />
-Gabriele Chiossi (github: gabrielechiossi, developer)<br />
+Gabriele Chiossi (github: gabrielechiossi, manteiner and developer)<br />
 Ben Marschall (github: bmarschall, developer)<br />
 Si'raaj Woods (github: siraajwoods, developer)<br />
 
@@ -32,6 +31,6 @@ Are we using framework or library?
 Yes, library that we find online and works for us
 Any tool for documentation?
 Github Pages
-SHould their be a build system?
+Should their be a build system?
 I do not think so. 
 >>>>>>> 42a91ec7bd2616e4e8d06803e1d34910491c7fc8
