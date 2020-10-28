@@ -6,6 +6,7 @@ const soundClips = document.querySelector('.sound-clips');
 const canvas = document.querySelector('.visualizer');
 const mainSection = document.querySelector('.main-controls');
 
+
 // disable stop button while not recording
 
 stop.disabled = true;
@@ -51,7 +52,7 @@ if (navigator.mediaDevices.getUserMedia) {
       record.disabled = false;
     }
     
-
+    
     
     mediaRecorder.onstop = function(e) {
       console.log("data available after MediaRecorder.stop() called.");
@@ -60,11 +61,17 @@ if (navigator.mediaDevices.getUserMedia) {
       const clipContainer = document.createElement('article');
       const clipLabel = document.createElement('p');
       const audio = document.createElement('audio');
+      //const wavesurfer = document.createElement('audio');
       const deleteButton = document.createElement('button');
       const editLabel = document.createElement('button');
 
       clipContainer.classList.add('clip');
       audio.setAttribute('controls', '');
+      /*wavesurfer = WaveSurfer.create({
+        container: '#waveform',
+        waveColor: 'black',
+        progressColor: '#FF5126'
+      });*/
       deleteButton.textContent = 'Delete';
       deleteButton.className = 'delete';
       editLabel.textContent = 'Edit';
@@ -76,18 +83,41 @@ if (navigator.mediaDevices.getUserMedia) {
         clipLabel.textContent = clipName;
       }
 
+      //clipContainer.appendChild(wavesurfer);
       clipContainer.appendChild(audio);
       clipContainer.appendChild(clipLabel);
       clipContainer.appendChild(deleteButton);
       clipContainer.appendChild(editLabel);
       soundClips.appendChild(clipContainer);
 
+      
       audio.controls = true;
       const blob = new Blob(chunks, { 'type' : 'audio/wav; codecs=opus' });
       chunks = [];
       const audioURL = window.URL.createObjectURL(blob);
       audio.src = audioURL;
       console.log("recorder stopped");
+
+      
+        
+     var wavesurfer = WaveSurfer.create({
+        container: '#waveform',
+        waveColor: 'black',
+        progressColor: '#FF5126'
+      });
+      
+    
+    /* Here upload your audio */
+    
+    wavesurfer.load(audioURL);
+    
+    /* Here Play audio */
+    
+    audio.onplaying = function() {
+      console.log("it's playing");
+        wavesurfer.play();
+    }  
+      
 
       deleteButton.onclick = function(e) {
         let evtTgt = e.target;
