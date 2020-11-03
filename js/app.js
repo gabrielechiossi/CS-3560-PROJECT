@@ -103,7 +103,7 @@ if (navigator.mediaDevices.getUserMedia) {
      var wavesurfer = WaveSurfer.create({
         container: '#waveform',
         waveColor: 'black',
-        progressColor: '#FF5126'
+        progressColor: '#FF5126', 
       });
       
     
@@ -118,6 +118,10 @@ if (navigator.mediaDevices.getUserMedia) {
         wavesurfer.play();
     }  
       
+    audio.onpause = function() {
+      console.log("it's pause");
+      wavesurfer.pause();
+    }
 
       deleteButton.onclick = function(e) {
         let evtTgt = e.target;
