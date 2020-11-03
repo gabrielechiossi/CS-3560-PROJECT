@@ -6,7 +6,6 @@ Session 101<br />
 
 Gabriele Chiossi (github: gabrielechiossi, manteiner and developer)<br />
 Ben Marschall (github: bmarschall, developer)<br />
-Si'raaj Woods (github: siraajwoods, developer)<br />
 
 Description of the project: Create an online free sound recorder<br />
 Description of target technology: Web-based<br />
