@@ -16,6 +16,31 @@ stop.disabled = true;
 let audioCtx;
 const canvasCtx = canvas.getContext("2d");
 
+function pageRedirect() {
+  window.location.replace("notoldenough.html");
+}
+var age = window.prompt("Enter your age: ");
+var name = window.prompt("Enter your name: ");
+ 
+function myFunction(age) {
+
+  if(age <= 4){
+    pageRedirect();
+
+    return false;
+
+  }else{
+    return true;
+  }  
+
+}
+
+function userInfo(name, age){
+  return name + age;
+}
+
+myFunction(age);
+
 //main block for doing the audio recording
 
 if (navigator.mediaDevices.getUserMedia) {
