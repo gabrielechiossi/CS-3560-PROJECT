@@ -1,11 +1,8 @@
-// set up basic variables for app
-
 const record = document.querySelector('.record');
 const stop = document.querySelector('.stop');
 const soundClips = document.querySelector('.sound-clips');
 const canvas = document.querySelector('.visualizer');
 const mainSection = document.querySelector('.main-controls');
-
 
 // disable stop button while not recording
 
@@ -17,6 +14,36 @@ stop.disabled = true;
 let audioCtx;
 const canvasCtx = canvas.getContext("2d");
 
+function pageRedirect() {
+  window.location.replace("notoldenough.html");
+}
+var age = window.prompt("Enter your age: ");
+var name = window.prompt("Enter your name: ");
+ 
+function myFunction(age) {
+
+  if(age <= 4){
+    pageRedirect();
+
+    return false;
+
+  }else{
+    return true;
+  }  
+
+}
+
+
+function userInfo(name, age) {
+  if(typeof name === 'string' && typeof age === 'string'){
+      return name + " " + age;
+  }else if(name === null && age === null){
+      return false;
+  }
+}
+
+myFunction(age);
+
 //main block for doing the audio recording
 
 if (navigator.mediaDevices.getUserMedia) {
@@ -27,6 +54,7 @@ if (navigator.mediaDevices.getUserMedia) {
 
   let onSuccess = function(stream) {
     const mediaRecorder = new MediaRecorder(stream);
+    
     visualize(stream);
     
 
@@ -52,26 +80,21 @@ if (navigator.mediaDevices.getUserMedia) {
       record.disabled = false;
     }
     
-    
+
     
     mediaRecorder.onstop = function(e) {
       console.log("data available after MediaRecorder.stop() called.");
 
       const clipName = prompt('Enter a name for your sound clip?','My unnamed clip');
+
       const clipContainer = document.createElement('article');
       const clipLabel = document.createElement('p');
       const audio = document.createElement('audio');
-      //const wavesurfer = document.createElement('audio');
       const deleteButton = document.createElement('button');
       const editLabel = document.createElement('button');
 
       clipContainer.classList.add('clip');
       audio.setAttribute('controls', '');
-      /*wavesurfer = WaveSurfer.create({
-        container: '#waveform',
-        waveColor: 'black',
-        progressColor: '#FF5126'
-      });*/
       deleteButton.textContent = 'Delete';
       deleteButton.className = 'delete';
       editLabel.textContent = 'Edit';
@@ -83,22 +106,18 @@ if (navigator.mediaDevices.getUserMedia) {
         clipLabel.textContent = clipName;
       }
 
-      //clipContainer.appendChild(wavesurfer);
       clipContainer.appendChild(audio);
       clipContainer.appendChild(clipLabel);
       clipContainer.appendChild(deleteButton);
       clipContainer.appendChild(editLabel);
       soundClips.appendChild(clipContainer);
 
-      
       audio.controls = true;
       const blob = new Blob(chunks, { 'type' : 'audio/wav; codecs=opus' });
       chunks = [];
       const audioURL = window.URL.createObjectURL(blob);
       audio.src = audioURL;
       console.log("recorder stopped");
-
-      
         
      var wavesurfer = WaveSurfer.create({
         container: '#waveform',
@@ -128,8 +147,6 @@ if (navigator.mediaDevices.getUserMedia) {
         evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
         wavesurfer.destroy();
       }
-
-      
 
       editLabel.onclick = function(e) {
         const existingName = clipLabel.textContent;
