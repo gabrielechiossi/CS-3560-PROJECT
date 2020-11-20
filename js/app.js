@@ -35,8 +35,13 @@ function myFunction(age) {
 
 }
 
-function userInfo(name, age){
-  return name + age;
+
+function userInfo(name, age) {
+  if(typeof name === 'string' && typeof age === 'string'){
+      return name + " " + age;
+  }else if(name === null && age === null){
+      return false;
+  }
 }
 
 myFunction(age);
