@@ -110,7 +110,7 @@ if (navigator.mediaDevices.getUserMedia) {
       clipContainer.appendChild(clipLabel);
       clipContainer.appendChild(deleteButton);
       clipContainer.appendChild(editLabel);
-      soundClips.appendChild(clipContainer);
+      
 
       audio.controls = true;
       const blob = new Blob(chunks, { 'type' : 'audio/wav; codecs=opus' });
@@ -124,7 +124,7 @@ if (navigator.mediaDevices.getUserMedia) {
         waveColor: 'black',
         progressColor: '#FF5126', 
       });
-      
+      waveform.appendChild(clipContainer);
     
     /* Here upload your audio */
     
