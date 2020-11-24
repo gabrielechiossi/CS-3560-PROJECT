@@ -18,7 +18,7 @@ Github repo: https://github.com/gabrielechiossi/CS-3560-PROJECT.git<br />
 <br />
 
 1) What language are we learning towards?<br /> 
-- Javascript, CSS3, Other tools if we need them<br />
+-Javascript, CSS3, Other tools if we need them<br />
 2) What would be an editor? Do need an IDE?<br />
 -VS Code<br />
 3) What is the version control software?<br />
